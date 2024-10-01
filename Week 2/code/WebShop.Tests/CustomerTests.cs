@@ -53,7 +53,7 @@ namespace WebShop.Tests
             makeStoreWithShampoo10(); // met gebruik van factory method
 
             // Act
-            bool result = customer.Purchase(store, Product.Shampoo, 10);
+            bool result = customer.Purchase(store, Product.Shampoo, 5);
 
             // Assert
             Assert.That(result, Is.True);
@@ -99,7 +99,7 @@ namespace WebShop.Tests
         {
             // Arrange
             Store store = new Store();
-            store.AddInventory(Product.Shampoo, 5);
+            store.AddInventory(Product.Shampoo, 10);
             Customer sut = new Customer();
             Dictionary<Product, int> expectedBasket = new Dictionary<Product, int>() { { Product.Shampoo, 5 } };
 

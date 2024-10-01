@@ -10,6 +10,13 @@ namespace WebShop
     {
         static void Main(string[] args)
         {
+            Store store = new Store();
+            store.AddInventory(Product.Shampoo, 10);
+
+            Customer sut = new Customer();
+            sut.Purchase(store, Product.Shampoo, 5);
+
+
         }
     }
 }
