@@ -38,5 +38,70 @@ namespace Calculator.Tests
             // Assert
             Assert.That(result, Is.EqualTo(15));
         }
+
+        [Test]
+        public void Divide_10en5_resultaat2()
+        {
+            // Arrange
+            Calculator sut = new Calculator();
+
+            // Act
+            int result = sut.Divide(10, 5);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(2));
+        }
+
+        [Test]
+        [TestCase(10, 5)]
+        [TestCase(15, 2)]
+        [TestCase(39, 3)]
+        [TestCase(-5, 5)]
+        public void Divide_TwoIntegerNumbers_CorrectIntegerDivision(int number1, int number2)
+        {
+            // Arrange
+            Calculator sut = new Calculator();
+
+            // Act
+            int result = sut.Divide(number1, number2);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(number1/number2));
+        }
+
+        [Test]
+        [TestCase(10, 5, 2)]
+        [TestCase(15, 2, 7)]
+        [TestCase(39, 3, 13)]
+        [TestCase(-5, 5, -1)]
+        public void Divide_TwoIntegerNumbers_CorrectIntegerDivision_Voorbeeld2(int number1, int number2, int expectedResult)
+        {
+            // Arrange
+            Calculator sut = new Calculator();
+
+            // Act
+            int result = sut.Divide(number1, number2);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+
+        [Test]
+        public void Divide_ByZero_ThrowsError()
+        {
+            // Arrange
+            Calculator sut = new Calculator();
+
+            try { 
+                // Act -> best 1 lijn
+                sut.Divide(10, 0);
+
+                Assert.Fail(); // Als de code hier komt, faalt het altijd
+            } catch (DivideByZeroException ex)
+            {
+                Assert.That(ex.Message, Is.EqualTo("Attempted to divide by zero."));
+                Assert.Pass();
+            }            
+        }
     }
 }
