@@ -1,6 +1,6 @@
 # Testcase AddToCart.001
 
-status: :green_check_mark: / :x:
+status: :white_check_mark: / :x:
 
 {Test Case Description}
 
