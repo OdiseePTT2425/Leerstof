@@ -30,5 +30,15 @@ namespace Les3
                 return age;
             }
         }
+
+        public override string ToString()
+        {
+            return FirstName + " " + Age;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return base.Equals(obj);
+        }
     }
 }

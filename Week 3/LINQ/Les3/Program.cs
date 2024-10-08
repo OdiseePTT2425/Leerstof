@@ -15,9 +15,9 @@ namespace Les3
             {
                 som += list[i];
             }
-            AnsiConsole.WriteLine("Average original methode " + som/list.Count);
+            //AnsiConsole.WriteLine("Average original methode " + som/list.Count);
 
-            AnsiConsole.WriteLine("Average via LINQ " + list.Average());
+            //AnsiConsole.WriteLine("Average via LINQ " + list.Average());
 
             double min = list.Min();
             double max = list.Max();
@@ -32,13 +32,13 @@ namespace Les3
             }
 
             // Select
-            print(list);
-            print(list.Select(Square)); // Voer de square functie uit op elk element in de lijst
+            //print(list);
+            //print(list.Select(Square)); // Voer de square functie uit op elk element in de lijst
             // De select functie (en eigenlijk heel veel LINQ functies) accepteren een Delegate / een referentie naar een functie
 
             //lambda expressie / lambda functie
             // soort van tijdelijke / naamloze functies
-            print(list.Select((int x) => { return x * x; }));
+            //print(list.Select((int x) => { return x * x; }));
             // Dit is de lambda expressie: (int x) => { return x * x; }
             // Tussen de () ronde haakjes staan je inputs
             // Tussen de {} accolades staat de body -> eindigt in return
@@ -47,10 +47,10 @@ namespace Les3
                 // Daarnaast als er 1 maar 1 parameter is mogen de ronde haakjes weg
                 // Als de output 1 lijn is in de body dan mogen de accolades en return ook weg
 
-            print(list.Select( x => x * x));
+            //print(list.Select( x => x * x));
 
             // Where -> filteren
-            print(list.Where(x => x%2 == 0)); // filter eens enkel de even getallen eruit -> gewenste output is 8,14
+           // print(list.Where(x => x%2 == 0)); // filter eens enkel de even getallen eruit -> gewenste output is 8,14
 
             // Wat als we met objecten zitten in een lijst ipv getallen?
             List<Student> students = new List<Student>()
@@ -73,6 +73,14 @@ namespace Les3
 
             // Stel dat je een lijst wilt met alle studenten die ouder zijn dan 24 jaar
             // Hoe doe je dit?
+            // Een eerste idee
+            print(students.Select(x => x.Age).Where(x => x > 24)); // Dit geeft integers als resultaat (enkel de leeftijden van de studenten die ouder zijn dan)
+            print(students.Where(x => x.Age > 24)); // Dit is een betere manier -> geeft de objecten als resultaat
+            // Standaard is het beter eerst where te doen dan select (hiermee doe je de select niet op objecten die je weggooit)
+            // geen overbodig rekenwerk
+
+            students.First(x => x.FirstName == "Evan");
+            //students.Where(x => x.FirstName == "Evan").First();
         }
 
         public static int Square(int x)
@@ -82,12 +90,23 @@ namespace Les3
 
         public static void print(IEnumerable<int> list)
         {
-            AnsiConsole.Write('[');
+            //AnsiConsole.Write('[');
             foreach (int x in list) { 
-                AnsiConsole.Write(x.ToString());
-                AnsiConsole.Write(" , ");
+            //    AnsiConsole.Write(x.ToString());
+            //    AnsiConsole.Write(" , ");
             }
-            AnsiConsole.Write("]\n");
+          //  AnsiConsole.Write("]\n");
+        }
+
+        public static void print(IEnumerable<Student> list)
+        {
+       //     AnsiConsole.Write('[');
+            foreach (Student x in list)
+            {
+              //  AnsiConsole.Write(x.ToString());
+           //     AnsiConsole.Write(" , ");
+            }
+           // AnsiConsole.Write("]\n");
         }
     }
 }
