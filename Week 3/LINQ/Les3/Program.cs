@@ -15,9 +15,9 @@ namespace Les3
             {
                 som += list[i];
             }
-            Console.WriteLine("Average original methode " + som/list.Count);
+            AnsiConsole.WriteLine("Average original methode " + som/list.Count);
 
-            Console.WriteLine("Average via LINQ " + list.Average());
+            AnsiConsole.WriteLine("Average via LINQ " + list.Average());
 
             double min = list.Min();
             double max = list.Max();
@@ -50,7 +50,29 @@ namespace Les3
             print(list.Select( x => x * x));
 
             // Where -> filteren
-            print(list.Where()); // filter eens enkel de even getallen eruit -> gewenste output is 8,14
+            print(list.Where(x => x%2 == 0)); // filter eens enkel de even getallen eruit -> gewenste output is 8,14
+
+            // Wat als we met objecten zitten in een lijst ipv getallen?
+            List<Student> students = new List<Student>()
+            {
+                new Student("Mariam", "Legros", new DateTime(2001, 12, 1) ),
+                new Student("Kayley", "Thiel", new DateTime(1985, 1, 14) ),
+                new Student("Ewell", "Maggio", new DateTime(2003, 4, 30) ),
+                new Student("Evan", "Towne", new DateTime(2000, 2, 11) ),
+                new Student("Meggie", "Dach", new DateTime(2001, 2, 28) )
+            };
+
+            //students.Average(); // Wat moet dit als resultaat hebben?
+            //students.Max(); // Wat moet dit als resultaat hebben?
+
+            // stel we willen de gemiddelde leeftijd van een student
+            // Student -> int (age) -> gemiddelde
+            students.Select(x => x.Age).Average();
+            students.Average(x => x.Age); // Doet identiek hetzelfde als hierboven
+            students.Max(x => x.Age);
+
+            // Stel dat je een lijst wilt met alle studenten die ouder zijn dan 24 jaar
+            // Hoe doe je dit?
         }
 
         public static int Square(int x)
