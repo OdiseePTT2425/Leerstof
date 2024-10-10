@@ -9,7 +9,6 @@ namespace WithDatabase
     [Table("Student")]
     public partial class Student
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [StringLength(50)]

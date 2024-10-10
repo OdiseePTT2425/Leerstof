@@ -1,8 +1,8 @@
 ﻿-- insert
---insert into Student values(1, 'Lisa', 15);
---insert into Student values(2, 'Jens', 20);
---insert into Student values(3, 'alkjdfa', 7);
---insert into Student values(4, 'gelukkige', 10);
+insert into Student values('Lisa', 15);
+insert into Student values('Jens', 20);
+insert into Student values('alkjdfa', 7);
+insert into Student values('gelukkige', 10);
 
 -- select
 --select * from Student where Score>=10;
