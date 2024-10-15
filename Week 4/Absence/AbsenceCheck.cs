@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace Absence
 
 {
+    // Dit houdt bij welke studenten aanwezig/afwezig/gewettigd afwezig waren
+    // 1 object per dag
+    // Data klasse
     public class AbsenceCheck
     {
         public DateOnly Day { get; set; }

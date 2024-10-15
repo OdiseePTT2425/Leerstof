@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Absence\Absence.csproj" />
+    <ProjectReference Include="..\PersonAgeValidator\PersonAgeValidator.csproj" />
   </ItemGroup>
 
   <ItemGroup>

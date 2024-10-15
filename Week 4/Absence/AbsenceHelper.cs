@@ -1,21 +1,57 @@
 ﻿
+using System.Data;
+using System.Numerics;
+
 namespace Absence
 {
     public class AbsenceHelper
     {
-
-        IAbsenceTracker _absenceTracker;
-
         List<Student> _students = new List<Student>();
 
-        public AbsenceHelper(): this(new AbsenceTracker())
-        {
+        // Dit zou je gedaan hebben voor testdoubles
+        /* IAbsenceTracker _absenceTracker = new AbsenceTracker();
+         public AbsenceHelper() { 
+         }*/
 
+        // Om de dependency naar absencetracker te doorbreken
+        // hebben we niet het voorgaande nodig maar de twee constructors die hieronder staan
+        private IAbsenceTracker _absenceTracker;
+        private IView _view;
+        public AbsenceHelper(): this(new AbsenceTracker(), new View())
+        {
+            // Deze ctor is het voor het standaard gedrag
+            // In de normale werking gebruik je de normale tracker
+        }
+        public AbsenceHelper(IAbsenceTracker absenceTracker) : this(absenceTracker, new View())
+        {
         }
 
-        public AbsenceHelper(IAbsenceTracker absenceTracker)
+        public AbsenceHelper(IAbsenceTracker absenceTracker, IView view)
         {
             _absenceTracker = absenceTracker;
+            _view = view;
+            // Dit is voor te testen en maakt het mogelijk om de dependency te doorbreken
+        }
+
+        public void AddNewStudent()
+        {
+            /*
+            // Wat als we met input van een user zitten
+            Console.WriteLine("Geef een studentid in");
+            string? id = Console.ReadLine();
+            Console.WriteLine("Geef een voornaam in");
+            string? voornaam = Console.ReadLine();
+            Console.WriteLine("Geef een achternaam in");
+            string? achternaam = Console.ReadLine();
+
+            Student student = new Student(id, voornaam, achternaam);
+            */
+            // Bovenstaande code bevat een dependency op de console klasse
+            // Haal deze uit de te testen klasse en plaats deze in een view klasse
+            // Gebruik een interface om deze toe te voegen hieraan zodat het gedrag gecontroleerd kan worden
+
+            Student s = _view.AskForStudent();
+            this.AddNewStudent(s);
         }
 
         /// <summary>

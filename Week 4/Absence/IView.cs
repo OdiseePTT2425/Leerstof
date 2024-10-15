@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Absence
 {
-    // Wat is de status van een student?
-    internal enum PresenceState
+    public interface IView
     {
-        Present,
-        Absent,
-        Excused
+        // Hier plaats je eigenlijk alle functies die interacties met de console hebben
+
+        Student AskForStudent();
     }
 }

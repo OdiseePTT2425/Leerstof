@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Absence
 {
+    // Data klasse (kan in repository)
     public class Student
     {
         public string Id { get; }
